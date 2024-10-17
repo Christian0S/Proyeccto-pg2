@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Empleado</title>
+    <link rel="stylesheet" href="/Assent/css/empleados/EditarEmpleado.css">
+</head>
+<body>
+    <header>
+        <h1>EDITAR EMPLEADO</h1>
+        <div class="header-icons">
+            <div class="notification" onclick="toggleNotifications()">
+                <img src="/Assent/img/bell.png" alt="Notificaciones">
+                <div class="notification-menu" id="notificationMenu">
+                    <!-- Aquí se mostrarán las notificaciones -->
+                </div>
+            </div>
+            <div class="user" onclick="toggleProfile()">
+                <img id="avatar" src="/Assent/img/default-avatar.jpeg" alt="Usuario">
+                <div class="profile-menu" id="profileMenu">
+                    <p><a href="/Html/edicion_perfil.html" class="button1" id="editProfileBtn">Editar Perfil</a></p>
+                    <p><a href="#" class="button1" id="historyBtn">Historial</a></p>
+                    <p><a href="#" class="button1" id="logout">Cerrar Sesión</a></p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+            <button onclick="toggleSidebar()">☰</button>
+            <ul>
+                <li><a href="#">INICIO</a></li>
+                <li><a href="/Html/empleado/empleados.html">EMPLEADOS</a></li>
+                <li><a href="#">ORDEN COMPRA</a></li>
+                <li><a href="#">INVENTARIO</a></li>
+                <li><a href="#">DOCUMENTOS</a></li>
+            </ul>
+        </div>
+        <form id="editEmployeeForm" class="form-container">
+            <div class="profile-header">
+                <input type="file" id="profile-pic" accept="image/*" style="display:none;" />
+                <label for="profile-pic">
+                    <img id="avatar" src="/Assent/img/default-avatar.jpeg" alt="User Avatar" class="avatar"/>
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" value="John" required>
+            </div>
+            <div class="form-group">
+                <label for="apellidos">Apellidos:</label>
+                <input type="text" id="apellidos" value="Doe" required>
+            </div>
+            <div class="form-group">
+                <label for="tipoIdentificacion">Tipo de Identificación:</label>
+                <select id="tipoIdentificacion" required>
+                    <option value="Cédula" selected>Cédula</option>
+                    <option value="Pasaporte">Pasaporte</option>
+                    <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="numeroIdentificacion">Número de Identificación:</label>
+                <input type="number" id="numeroIdentificacion" value="1234567890" required>
+            </div>
+            <div class="form-group">
+                <label for="pais">País:</label>
+                <select id="pais" required>
+                    <option value="Colombia">Colombia</option>
+                    <option value="México">México</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="España">España</option>
+                    <option value="Estados Unidos" selected>Estados Unidos</option>
+                    <option value="Brasil">Brasil</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="ciudad">Ciudad:</label>
+                <input type="text" id="ciudad" value="Nueva York" required>
+            </div>
+            <div class="form-group">
+                <label for="direccion">Dirección:</label>
+                <input type="text" id="direccion" value="Calle 123" required>
+            </div>
+            <div class="form-group">
+                <label for="telefono">Número de Teléfono:</label>
+                <input type="tel" id="telefono" value="9876543210" required>
+            </div>
+            <div class="form-group">
+                <label for="correo">Correo:</label>
+                <input type="email" id="correo" value="johndoe@example.com" required>
+            </div>
+            <div class="form-group">
+                <label for="cargo">Cargo:</label>
+                <input type="text" id="cargo" value="Gerente" required>
+            </div>
+            <div class="form-group">
+                <label for="documentos">Subir Documentos (Hoja de Vida):</label>
+                <input type="file" id="documentos" multiple>
+            </div>
+            <div class="form-group">
+                <label for="antecedentes">Anotaciones de Antecedentes:</label>
+                <textarea id="antecedentes" rows="4" placeholder="Escribe aquí las anotaciones..."></textarea>
+            </div>
+            <button type="submit" class="button">Guardar Cambios</button>
+            <div class="modification-info">
+                <p>Creado por: <span id="modifiedBy">Admin</span></p>
+                <p>Cargo: <span id="creatorPosition">Gerente</span></p>
+                <p>Fecha de creación: <span id="modificationDate">16/10/2024</span></p>
+            </div>
+            <button id="downloadJson" class="button">Descargar JSON</button>
+        </form>
+    </div>
+    <script src="/Assent/js/empleados/EditarEmpleado.js"></script>
+    <script src="/Assent/js/general.js"></script>
+</body>
+</html>

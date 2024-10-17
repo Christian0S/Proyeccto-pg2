@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Proveedor</title>
+    <link rel="stylesheet" href="/Assent/css/proveedores/CrearProveedor.css">
+</head>
+<body>
+    <header>
+        <h1>PAGINA DE INICIO</h1>
+        <div class="header-icons">
+            <div class="notification" onclick="toggleNotifications()">
+                <img src="/Assent/img/bell.png" alt="Notificaciones">
+                <div class="notification-menu" id="notificationMenu">
+                    <!-- Aquí se mostrarán las notificaciones de aceptación -->
+                </div>
+            </div>
+            <div class="user" onclick="toggleProfile()">
+                <img id="avatar" src="/Assent/img/default-avatar.jpeg" alt="Usuario">
+                <div class="profile-menu" id="profileMenu">
+                    <p><a href="../Html/edicion_perfil.html" class="button1" id="editProfileBtn">Editar Perfil</a></p>
+                    <p><a href="#" class="button1" id="historyBtn">Historial</a></p>
+                    <p><a href="#" class="button1" id="logout">Cerrar Sesión</a></p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+            <button onclick="toggleSidebar()">☰</button>
+            <ul>
+                <li><a href="#">INICIO</a></li>
+                <li><a href="/Html/proveedor/proveedores.html">PROVEEDORES</a></li>
+                <li><a href="#">ORDEN COMPRA</a></li>
+                <li><a href="#">EMPLEADOS</a></li>
+                <li><a href="#">INVENTARIO</a></li>
+                <li><a href="#">DOCUMENTOS</a></li>
+            </ul>
+        </div>
+        <form id="providerForm" class="form-container">
+            <div class="profile-header">
+                <input type="file" id="profile-pic" accept="image/*" style="display:none;" />
+                <label for="profile-pic">
+                    <img id="avatars" src="/Assent/img/default-avatar.jpeg" alt="User Avatar" class="avatar"/>
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="apellidos">Apellidos:</label>
+                <input type="text" id="apellidos" required>
+            </div>
+            <div class="form-group">
+                <label for="tipoIdentificacion">Tipo de Identificación:</label>
+                <select id="tipoIdentificacion" required>
+                    <option value="Cédula">Cédula</option>
+                    <option value="NIT">NIT</option>
+                    <option value="Pasaporte">Pasaporte</option>
+                    <option value="RUT">RUT</option>
+                    <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="numeroIdentificacion">Número de Identificación:</label>
+                <input type="text" id="numeroIdentificacion" required>
+            </div>
+            <div class="form-group">
+                <label for="pais">País:</label>
+                <select id="pais" required>
+                    <option value="Colombia">Colombia</option>
+                    <option value="México">México</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="España">España</option>
+                    <option value="Estados Unidos">Estados Unidos</option>
+                    <option value="Brasil">Brasil</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="ciudad">Ciudad:</label>
+                <input type="text" id="ciudad" required>
+            </div>
+            <div class="form-group">
+                <label for="direccion">Dirección:</label>
+                <input type="text" id="direccion" required>
+            </div>
+            <div class="form-group">
+                <label for="telefono">Número de Teléfono:</label>
+                <input type="tel" id="telefono" required>
+            </div>
+            <div class="form-group">
+                <label for="correo">Correo:</label>
+                <input type="email" id="correo" required>
+            </div>
+            <button type="submit" class="button">Guardar Proveedor</button>
+            <div class="creation-info">
+                <p>Creado por: <span id="createdBy">Usuario</span></p>
+                <p>Fecha de creación: <span id="creationDate">Fecha</span></p>
+            </div>
+            <button id="downloadJson" class="button">Descargar JSON</button>
+        </form>
+    </div>
+    <script src="/Assent/js/proveedores/CrearProveedor.js"></script>
+</body>
+</html>
