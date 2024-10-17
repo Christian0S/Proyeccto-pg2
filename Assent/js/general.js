@@ -37,3 +37,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Si necesitas más notificaciones, puedes llamarlas aquí
 });
+
+
+function toggleOrdenMenu() {
+    var ordenMenu = document.getElementById("ordenDropdown");
+    if (ordenMenu.style.display === "block") {
+        ordenMenu.style.display = "none"; // Hide if visible
+    } else {
+        ordenMenu.style.display = "block"; // Show if hidden
+    }
+}
+

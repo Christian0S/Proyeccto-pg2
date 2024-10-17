@@ -1,0 +1,281 @@
+[
+    {
+        "id": 1,
+        "name": "Producto 1",
+        "category": "Materas",
+        "stock": 15,
+        "price": 25000,
+        "image": "/Assent/img/materas.png",
+        "alertStockLevel": 40
+    },
+    {
+        "id": 2,
+        "name": "Producto 2",
+        "category": "Artesanías",
+        "stock": 5,
+        "price": 15000,
+        "image": "/Assent/img/artesanias.png",
+        "alertStockLevel": 20
+    },
+    {
+        "id": 3,
+        "name": "Producto 3",
+        "category": "Abonos-Tierra",
+        "stock": 9,
+        "price": 5300,
+        "image": "/Assent/img/abonos.png",
+        "alertStockLevel": 20
+    },
+    {
+        "id": 4,
+        "name": "Producto 4",
+        "category": "Plantas",
+        "stock": 22,
+        "price": 12000,
+        "image": "/Assent/img/plantas.png",
+        "alertStockLevel": 20
+    },
+    {
+        "id": 5,
+        "name": "Producto 5",
+        "category": "Materas",
+        "stock": 30,
+        "price": 20000,
+        "image": "/Assent/img/materas.png",
+        "alertStockLevel": 20
+    },
+    {
+        "id": 6,
+        "name": "Producto 6",
+        "category": "Artesanías",
+        "stock": 12,
+        "price": 10000,
+        "image": "/Assent/img/artesanias.png",
+        "alertStockLevel": 20
+    },
+    {
+        "id": 7,
+        "name": "Producto 7",
+        "category": "Abonos-Tierra",
+        "stock": 25,
+        "price": 3000,
+        "image": "/Assent/img/abonos.png",
+        "alertStockLevel": 20
+    },
+    {
+        "id": 8,
+        "name": "Producto 8",
+        "category": "Plantas",
+        "stock": 8,
+        "price": 6000,
+        "image": "/Assent/img/plantas.png",
+        "alertStockLevel": 20
+    },
+    {
+        "id": 9,
+        "name": "Producto 9",
+        "category": "Materas",
+        "stock": 0,
+        "price": 45000,
+        "image": "/Assent/img/materas.png",
+        "alertStockLevel": 20
+    },
+    {
+        "id": 10,
+        "name": "Producto 10",
+        "category": "Artesanías",
+        "stock": 3,
+        "price": 30000,
+        "image": "/Assent/img/artesanias.png",
+        "alertStockLevel": 20
+    },
+    {
+        "id": 11,
+        "name": "Producto 11",
+        "category": "Abonos-Tierra",
+        "stock": 18,
+        "price": 5000,
+        "image": "/Assent/img/abonos.png",
+        "alertStockLevel": 20
+    },
+    {
+        "id": 12,
+        "name": "Producto 12",
+        "category": "Plantas",
+        "stock": 20,
+        "price": 11000,
+        "image": "/Assent/img/plantas.png",
+        "alertStockLevel": 20
+    },
+    {
+        "id": 13,
+        "name": "Producto 13",
+        "category": "Materas",
+        "stock": 14,
+        "price": 22000,
+        "image": "/Assent/img/materas.png",
+        "alertStockLevel": 20
+    },
+    {
+        "id": 14,
+        "name": "Producto 14",
+        "category": "Artesanías",
+        "stock": 10,
+        "price": 18000,
+        "image": "/Assent/img/artesanias.png",
+        "alertStockLevel": 20
+    },
+    {
+        "id": 15,
+        "name": "Producto 15",
+        "category": "Abonos-Tierra",
+        "stock": 12,
+        "price": 7000,
+        "image": "/Assent/img/abonos.png",
+        "alertStockLevel": 20
+    },
+    {
+        "id": 16,
+        "name": "Producto 16",
+        "category": "Plantas",
+        "stock": 4,
+        "price": 8000,
+        "image": "/Assent/img/plantas.png",
+        "alertStockLevel": 20
+    },
+    {
+        "id": 17,
+        "name": "Producto 17",
+        "category": "Materas",
+        "stock": 6,
+        "price": 33000,
+        "image": "/Assent/img/materas.png",
+        "alertStockLevel": 20
+    },
+    {
+        "id": 18,
+        "name": "Producto 18",
+        "category": "Artesanías",
+        "stock": 2,
+        "price": 45000,
+        "image": "/Assent/img/artesanias.png",
+        "alertStockLevel": 20
+    },
+    {
+        "id": 19,
+        "name": "Producto 19",
+        "category": "Abonos-Tierra",
+        "stock": 30,
+        "price": 3000,
+        "image": "/Assent/img/abonos.png",
+        "alertStockLevel": 20
+    },
+    {
+        "id": 20,
+        "name": "Producto 20",
+        "category": "Plantas",
+        "stock": 11,
+        "price": 9500,
+        "image": "/Assent/img/plantas.png",
+        "alertStockLevel": 20
+    },
+    {
+        "id": 21,
+        "name": "Producto 21",
+        "category": "Materas",
+        "stock": 9,
+        "price": 27000,
+        "image": "/Assent/img/materas.png",
+        "alertStockLevel": 20
+    },
+    {
+        "id": 22,
+        "name": "Producto 22",
+        "category": "Artesanías",
+        "stock": 8,
+        "price": 6000,
+        "image": "/Assent/img/artesanias.png",
+        "alertStockLevel": 20
+    },
+    {
+        "id": 23,
+        "name": "Producto 23",
+        "category": "Abonos-Tierra",
+        "stock": 1,
+        "price": 5000,
+        "image": "/Assent/img/abonos.png",
+        "alertStockLevel": 20
+    },
+    {
+        "id": 24,
+        "name": "Producto 24",
+        "category": "Plantas",
+        "stock": 14,
+        "price": 10000,
+        "image": "/Assent/img/plantas.png",
+        "alertStockLevel": 20
+    },
+    {
+        "id": 25,
+        "name": "Producto 25",
+        "category": "Materas",
+        "stock": 5,
+        "price": 25000,
+        "image": "/Assent/img/materas.png",
+        "alertStockLevel": 20
+    },
+    {
+        "id": 26,
+        "name": "Producto 26",
+        "category": "Artesanías",
+        "stock": 15,
+        "price": 15000,
+        "image": "/Assent/img/artesanias.png",
+        "alertStockLevel": 20
+    },
+    {
+        "id": 27,
+        "name": "Producto 27",
+        "category": "Abonos-Tierra",
+        "stock": 10,
+        "price": 3000,
+        "image": "/Assent/img/abonos.png",
+        "alertStockLevel": 20
+    },
+    {
+        "id": 28,
+        "name": "Producto 28",
+        "category": "Plantas",
+        "stock": 20,
+        "price": 12000,
+        "image": "/Assent/img/plantas.png",
+        "alertStockLevel": 20
+    },
+    {
+        "id": 29,
+        "name": "Producto 29",
+        "category": "Materas",
+        "stock": 22,
+        "price": 20000,
+        "image": "/Assent/img/materas.png",
+        "alertStockLevel": 20
+    },
+    {
+        "id": 30,
+        "name": "Producto 30",
+        "category": "Artesanías",
+        "stock": 12,
+        "price": 10000,
+        "image": "/Assent/img/artesanias.png",
+        "alertStockLevel": 20
+    },
+    {
+        "id": 31,
+        "name": "Producto 31",
+        "category": "Abonos-Tierra",
+        "stock": 10,
+        "price": 3000,
+        "image": "/Assent/img/abonos.png",
+        "alertStockLevel": 20
+    }
+]

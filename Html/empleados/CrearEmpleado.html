@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Empleado</title>
     <link rel="stylesheet" href="/Assent/css/empleados/CrearEmpleado.css">
+    <link rel="stylesheet" href="/Assent/css/general.css">
 </head>
 <header>
     <h1>CREAR EMPLEADO</h1>
@@ -30,8 +31,17 @@
             <ul>
                 <li><a href="/Html/Inicio_Gerente.html" class="button">INICIO</a></li>
                 <li><a href="/Html/proveedor/proveedores.html" class="button">PROVEEDORES</a></li>
-                <li><a href="#" class="button">ORDEN COMPRA</a></li>
-                <li><a href="#" class="button">EMPLEADOS</a></li>
+                <li>
+                    <div class="orden-compra-toggle" onclick="toggleOrdenMenu()">
+                        <p>ORDEN COMPRA</p>
+                        <div class="orden-dropdown" id="ordenDropdown">
+                            <a href="#" class="orden-option">Menú de Inventario Bajo</a>
+                            <a href="#" class="orden-option">Crear Orden de Compra</a>
+                            <a href="#" class="orden-option">Historial de Compras</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="/Html/empleados/empleados.html" class="button">EMPLEADOS</a></li>
                 <li><a href="#" class="button">INVENTARIO</a></li>
                 <li><a href="#" class="button">DOCUMENTOS</a></li>
             </ul>
