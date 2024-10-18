@@ -1,11 +1,32 @@
 // Fetch JSON and display products
-fetch('/JSONs/productos.json')
-    .then(response => response.json())
-    .then(products => {
-        displayProducts(products);
-        filterProducts(products);
-    })
-    .catch(error => console.error('Error fetching products:', error));
+async function loadProducts() {
+    const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
+
+    try {
+        const response = await fetch('/JSONs/productos.json');
+        const jsonProducts = await response.json();
+
+        // Fusionar los productos de localStorage y JSON, evitando duplicados
+        const allProducts = [...storedProducts, ...jsonProducts];
+
+        // Guardar todos los productos en localStorage (evita duplicados en el proceso)
+        const uniqueProducts = allProducts.reduce((acc, current) => {
+            const x = acc.find(item => item.id === current.id);
+            if (!x) {
+                return acc.concat([current]);
+            } else {
+                return acc;
+            }
+        }, []);
+
+        localStorage.setItem('products', JSON.stringify(uniqueProducts));
+
+        displayProducts(uniqueProducts);
+        filterProducts(uniqueProducts);
+    } catch (error) {
+        console.error('Error fetching products:', error);
+    }
+}
 
 // Display products in inventory grid
 function displayProducts(products) {
@@ -14,7 +35,7 @@ function displayProducts(products) {
 
     products.forEach(product => {
         // Only display low stock products (<= 20)
-        if (product.stock <= 20) {
+        if (product.quantityToAdd <= 20) { // Cambiar a quantityToAdd
             const productDiv = document.createElement('div');
             productDiv.classList.add('product');
 
@@ -24,7 +45,7 @@ function displayProducts(products) {
                 <div class="product-info">
                     <h3>${product.name}</h3>
                     <p>Categoría: ${product.category}</p>
-                    <p>Stock: ${product.stock}</p>
+                    <p>Stock: ${product.quantityToAdd}</p> <!-- Cambiar a quantityToAdd -->
                 </div>
             `;
             inventoryGrid.appendChild(productDiv);
@@ -44,7 +65,7 @@ function filterProducts(products) {
             // Filtrar productos si hay filtros seleccionados
             const filteredProducts = selectedFilters.length > 0
                 ? products.filter(product =>
-                    selectedFilters.includes(product.category.toLowerCase()) && product.stock <= 20
+                    selectedFilters.includes(product.category.toLowerCase()) && product.quantityToAdd <= 20 // Cambiar a quantityToAdd
                   )
                 : products; // Si no hay filtros, muestra todos los productos
 
@@ -52,3 +73,6 @@ function filterProducts(products) {
         });
     });
 }
+
+// Llamar a la función de cargar productos al cargar la página
+window.onload = loadProducts;

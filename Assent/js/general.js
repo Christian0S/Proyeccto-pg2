@@ -9,7 +9,7 @@ document.getElementById('historyBtn').addEventListener('click', function() {
 document.getElementById('logoutBtn').addEventListener('click', function() {
     // Lógica para cerrar sesión
     localStorage.removeItem('currentUser'); // Eliminar el usuario actual del localStorage
-    window.location.href = '../Index.html'; // Redirigir al inicio
+    window.location.href = '/Index.html'; // Redirigir al inicio
 });
 
 
@@ -48,3 +48,18 @@ function toggleOrdenMenu() {
     }
 }
 
+// Función para mostrar notificación de alerta baja
+function checkLowStock(product) {
+    if (product.quantityToAdd <= product.quantityToAlert) {
+        const notificationMessage = `Alerta: El producto ${product.name} está por debajo del nivel mínimo de stock.`;
+        showNotification(notificationMessage);
+    }
+}
+
+// Ejemplo de cómo llamar a la función con un producto
+const savedProduct = JSON.parse(localStorage.getItem('savedProduct'));
+if (savedProduct) {
+    checkLowStock(savedProduct);
+}
+
+// Asegúrate de que la función `showNotification` ya esté definida en general.js para mostrar notificaciones

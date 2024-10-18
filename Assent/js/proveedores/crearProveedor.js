@@ -1,65 +1,67 @@
-// Variables globales
-let providers = [];
+// Función para previsualizar la imagen seleccionada
+function previewImage(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
 
-// Cargar datos de localStorage y configurar eventos al cargar la página
-document.addEventListener('DOMContentLoaded', () => {
-    // Cargar proveedores del localStorage
-    const storedProviders = localStorage.getItem('providers');
-    if (storedProviders) {
-        providers = JSON.parse(storedProviders);
+    reader.onload = function(e) {
+        const avatarImg = document.getElementById('avatarsProveedor');
+        avatarImg.src = e.target.result; // Actualiza la imagen con la nueva imagen seleccionada
+    }
+
+    if (file) {
+        reader.readAsDataURL(file); // Lee el archivo como URL de datos
+    }
+}
+
+// Función para obtener datos del usuario desde localStorage o sessionStorage
+function getUserData() {
+    const userData = JSON.parse(localStorage.getItem('userData')); // O usa sessionStorage si es necesario
+
+    if (userData) {
+        return {
+            nombre: userData.nombre || 'Usuario', // Nombre por defecto
+            rol: userData.rol || 'Rol desconocido' // Rol por defecto
+        };
     } else {
-        console.log('No se encontraron proveedores en localStorage.');
+        return {
+            nombre: 'Usuario', // Nombre por defecto si no hay datos
+            rol: 'Rol desconocido' // Rol por defecto si no hay datos
+        };
     }
+}
 
-    // Configurar el evento de envío del formulario
-    const form = document.getElementById('providerForm');
-    if (form) {
-        form.addEventListener('submit', (event) => {
-            event.preventDefault(); // Evitar el envío del formulario
-            addProvider(); // Llamar a la función para agregar un proveedor
-        });
-    } else {
-        console.error('Formulario no encontrado.');
-    }
+// Función para cargar los datos de creación al cargar la página
+function loadCreationInfo() {
+    const userData = getUserData(); // Obtener datos del usuario
 
-    // Agregar evento para el botón de cierre de sesión
-    const logoutButton = document.getElementById('logout');
-    if (logoutButton) {
-        logoutButton.addEventListener('click', () => {
-            alert('Sesión cerrada.');
-        });
-    } else {
-        console.error('Botón de cierre de sesión no encontrado.');
-    }
+    // Mostrar el nombre y rol del usuario
+    document.getElementById('createdBy').textContent = userData.nombre;
+    document.getElementById('userRole').textContent = `Rol: ${userData.rol}`;
+    document.getElementById('creationDate').textContent = new Date().toLocaleDateString(); // Mostrar la fecha actual
+}
 
-    // Mostrar imagen de perfil del usuario activo
-    const userAvatar = document.getElementById('avatar');
-    if (userAvatar) {
-        userAvatar.src = '/Assent/img/default-avatar.jpeg'; // Cambia la ruta si es necesario
-    }
+// Función para agregar un proveedor
+function addProvider(event) {
+    event.preventDefault(); // Prevenir el envío del formulario
 
-    // Configurar notificaciones (aquí puedes agregar lógica para cargar notificaciones)
-    const notificationMenu = document.getElementById('notificationMenu');
-    if (notificationMenu) {
-        notificationMenu.innerHTML = "<p>No hay nuevas notificaciones.</p>"; // Mensaje por defecto
-    }
-});
-
-// Función para agregar un nuevo proveedor
-function addProvider() {
-    const nombre = document.getElementById('nombre').value;
-    const apellidos = document.getElementById('apellidos').value;
+    const nombre = document.getElementById('nombre').value.trim();
+    const apellidos = document.getElementById('apellidos').value.trim();
     const tipoIdentificacion = document.getElementById('tipoIdentificacion').value;
-    const numeroIdentificacion = document.getElementById('numeroIdentificacion').value;
+    const numeroIdentificacion = document.getElementById('numeroIdentificacion').value.trim();
     const pais = document.getElementById('pais').value;
-    const ciudad = document.getElementById('ciudad').value;
-    const direccion = document.getElementById('direccion').value;
-    const telefono = document.getElementById('telefono').value;
-    const correo = document.getElementById('correo').value;
+    const ciudad = document.getElementById('ciudad').value.trim();
+    const direccion = document.getElementById('direccion').value.trim();
+    const telefono = document.getElementById('telefono').value.trim();
+    const correo = document.getElementById('correo').value.trim();
 
-    // Crear un nuevo proveedor
+    // Obtener la fecha actual
+    const fechaCreacion = new Date().toLocaleDateString();
+
+    // Obtener la imagen de la etiqueta <img>
+    const imagen = document.getElementById('avatarsProveedor').src; // Obtener la URL de la imagen
+
     const newProvider = {
-        id: providers.length + 1, // Generar un ID único
+        id: Date.now(), // Generar un ID único basado en la fecha
         nombre: `${nombre} ${apellidos}`,
         tipoIdentificacion,
         numeroIdentificacion,
@@ -68,38 +70,33 @@ function addProvider() {
         direccion,
         telefono,
         correo,
-        fechaCreacion: new Date().toLocaleDateString(),
+        fechaCreacion,
+        creadoPor: getUserData().nombre, // Obtener el creador
+        rol: getUserData().rol, // Obtener el rol del creador
+        calificacion: 0, // Calificación inicial
+        cantidadCalificaciones: 0, // Cantidad de calificaciones inicial
+        imagen // Agregar el campo de imagen al JSON
     };
 
-    // Agregar el nuevo proveedor a la lista y guardar en localStorage
-    providers.push(newProvider);
-    localStorage.setItem('providers', JSON.stringify(providers));
-    
-    // Limpiar el formulario después de guardar
-    document.getElementById('providerForm').reset();
-    
-    // Mostrar mensaje de éxito
-    alert('Proveedor agregado exitosamente.');
-}
+    // Obtener los proveedores existentes del localStorage
+    const providers = JSON.parse(localStorage.getItem('providers')) || [];
 
-// Función para mostrar la imagen de perfil del proveedor
-function loadProfileImage() {
-    const profilePic = document.getElementById('profile-pic');
-    const avatar = document.getElementById('avatars');
-
-    if (profilePic && avatar) {
-        profilePic.addEventListener('change', (event) => {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    avatar.src = e.target.result;
-                };
-                reader.readAsDataURL(file);
-            }
-        });
+    // Verificar si el proveedor ya existe
+    const exists = providers.some(provider => provider.numeroIdentificacion === numeroIdentificacion);
+    if (exists) {
+        alert('El proveedor ya existe.');
+        return;
     }
+
+    // Agregar el nuevo proveedor a la lista
+    providers.push(newProvider);
+
+    // Guardar la lista actualizada en el localStorage
+    localStorage.setItem('providers', JSON.stringify(providers));
+
+    // Redirigir a la página de proveedores
+    window.location.href = 'Html/proveedor/proveedores.html';
 }
 
-// Llamar a la función para cargar la imagen de perfil
-loadProfileImage();
+// Llamar a la función para cargar los datos de creación al cargar la página
+window.onload = loadCreationInfo;

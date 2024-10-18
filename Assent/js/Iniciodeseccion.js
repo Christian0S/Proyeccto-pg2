@@ -11,8 +11,8 @@ async function sha256(message) {
 async function login(event) {
     event.preventDefault();
 
-    const username = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+    const username = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value.trim();
     const hashedPassword = await sha256(password);
 
     // Verificar si hay usuarios almacenados en localStorage
@@ -21,7 +21,7 @@ async function login(event) {
     // Si no hay usuarios, cargar usuarios predeterminados
     if (users.length === 0) {
         try {
-            const response = await fetch('../JSONs/usuarios.json');
+            const response = await fetch('JSONs/usuarios.json');
             users = await response.json();
             localStorage.setItem('usuarios', JSON.stringify(users)); // Guardar en localStorage
         } catch (error) {
@@ -37,13 +37,19 @@ async function login(event) {
     if (user) {
         alert(`Bienvenido, ${user.name}!`);
 
+        // Guardar los datos del usuario en localStorage
+        localStorage.setItem('userData', JSON.stringify({
+            nombre: user.name,
+            rol: user.position // Asumiendo que 'position' contiene el rol
+        }));
+
         // Redirigir según el rol del usuario
         if (user.position === "empleado") {
             window.location.href = "empleado.html";
         } else if (user.position === "proveedor") {
-            window.location.href = "proveedor.html";s
+            window.location.href = "proveedor.html";
         } else if (user.position === "gerente") {
-            window.location.href = "/Html/Inicio_Gerente.html";
+            window.location.href = "Html/Inicio_Gerente.html";
         }
     } else {
         alert("Usuario o contraseña incorrectos o cuenta no aceptada.");

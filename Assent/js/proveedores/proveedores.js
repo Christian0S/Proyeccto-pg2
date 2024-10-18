@@ -49,40 +49,37 @@ function renderProviders() {
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>${provider.id}</td>
-            <td>${provider.email}</td>
+            <td>${provider.correo}</td>
             <td>${provider.nombre}</td>
-            <td>${provider.productos}</td>
+            <td>${provider.cantidadCalificaciones}</td>
             <td>${provider.clasificacion}</td>
             <td>
-                <button onclick="editProvider(${provider.id})">Editar</button>
-                <button onclick="deleteProvider(${provider.id})">Eliminar</button>
-                <button onclick="openChat(${provider.id})">Chat</button>
+                <button onclick="editProvider(${provider.id})">✏️</button>
+                <button onclick="deleteProvider(${provider.id})">❌</button>
+                <button onclick="openChat(${provider.id})">💬</button>
             </td>
         `;
         providerBody.appendChild(row);
     });
 }
 
-// Abrir chat con proveedor (función ejemplo)
+// Abrir chat con proveedor en una ventana nueva
 function openChat(id) {
     const provider = providers.find(p => p.id === id);
     if (provider) {
-        alert(`Abriendo chat con el proveedor: ${provider.nombre}`);
-        // Aquí puedes implementar la lógica para abrir una ventana de chat
-        // o redirigir a una página específica de chat.
+        const chatWindow = window.open('/Html/CHAT/chat.html', '_blank', 'width=400,height=600');
+        chatWindow.onload = function() {
+            // Pasar datos del proveedor al chat
+            chatWindow.localStorage.setItem('selectedProvider', JSON.stringify(provider));
+        };
     } else {
         console.error(`Proveedor con ID ${id} no encontrado.`);
     }
 }
-// Editar proveedor (implementación básica)
+
+// Editar proveedor (redirigir a la página de edición)
 function editProvider(id) {
-    const provider = providers.find(p => p.id === id);
-    if (provider) {
-        // Lógica de edición del proveedor (mostrar un formulario, etc.)
-        alert(`Editando proveedor: ${provider.nombre}`);
-    } else {
-        console.error(`Proveedor con ID ${id} no encontrado.`);
-    }
+    window.location.href = `/Html/proveedor/EdProveedor.html?id=${id}`; // Redirigir a la página de edición
 }
 
 // Eliminar proveedor
@@ -92,39 +89,43 @@ function deleteProvider(id) {
     renderProviders();
 }
 
-// Cerrar los menús al hacer clic fuera de ellos
-window.onclick = function(event) {
-    const notificationMenu = document.querySelector('.notification-menu');
-    const profileMenu = document.querySelector('.profile-menu');
+// Funcionalidad de búsqueda
+document.getElementById('searchInput').addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase();
+    const filteredProviders = providers.filter(provider => {
+        return (
+            provider.nombre.toLowerCase().includes(searchTerm) ||
+            provider.clasificacion.toString().includes(searchTerm) ||
+            provider.id.toString().includes(searchTerm)
+        );
+    });
+    renderFilteredProviders(filteredProviders);
+});
 
-    if (!event.target.matches('.notification') && !event.target.matches('.user')) {
-        if (notificationMenu && notificationMenu.style.display === 'block') {
-            notificationMenu.style.display = 'none';
-        }
-        if (profileMenu && profileMenu.style.display === 'block') {
-            profileMenu.style.display = 'none';
-        }
+// Renderizar proveedores filtrados
+function renderFilteredProviders(filteredProviders) {
+    const providerBody = document.getElementById('providerBody');
+    providerBody.innerHTML = ''; // Limpiar tabla
+
+    if (filteredProviders.length === 0) {
+        providerBody.innerHTML = '<tr><td colspan="6">No hay proveedores disponibles.</td></tr>';
+        return;
     }
-};
 
-// Agregar eventos a los íconos de notificaciones y perfil
-document.querySelector('.notification').addEventListener('click', function(event) {
-    event.stopPropagation();
-    toggleNotificationMenu();
-});
-
-document.querySelector('.user').addEventListener('click', function(event) {
-    event.stopPropagation();
-    toggleProfileMenu();
-});
-
-// Actualizar el avatar del usuario al cargar la página
-document.addEventListener('DOMContentLoaded', function() {
-    const user = JSON.parse(localStorage.getItem('currentUser'));
-    if (user && user.avatar) {
-        const avatarImage = document.getElementById('avatar');
-        if (avatarImage) {
-            avatarImage.src = user.avatar;
-        }
-    }
-});
+    filteredProviders.forEach(provider => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${provider.id}</td>
+            <td>${provider.correo}</td>
+            <td>${provider.nombre}</td>
+            <td>${provider.cantidadCalificaciones}</td>
+            <td>${provider.clasificacion}</td>
+            <td>
+                <button onclick="editProvider(${provider.id})">✏️</button>
+                <button onclick="deleteProvider(${provider.id})">❌</button>
+                <button onclick="openChat(${provider.id})">💬</button>
+            </td>
+        `;
+        providerBody.appendChild(row);
+    });
+}
