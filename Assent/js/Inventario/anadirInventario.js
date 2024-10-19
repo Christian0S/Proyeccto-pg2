@@ -1,17 +1,22 @@
-// Función para cargar proveedores desde JSON y localStorage
+// Función para cargar proveedores desde el JSON
 function loadSuppliers() {
-    const supplierSelect = document.getElementById('supplierSelect');
+    const supplierSelect = document.getElementById('supplierSelect'); // Asegúrate de que este ID sea correcto
 
-    // Cargar proveedores desde JSON
+    // Cargar proveedores desde el archivo JSON
     fetch('/JSONs/proveedores.json')  // Cambia la ruta a la correcta si es necesario
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al cargar el archivo JSON: ' + response.status);
+            }
+            return response.json();
+        })
         .then(data => {
             data.forEach(supplier => {
                 // Asegurarse de que el proveedor tenga un ID y nombre válidos
-                if (supplier.id && supplier.nombre && supplier.apellidos) {
+                if (supplier.id && supplier.nombre) {
                     const option = document.createElement('option');
                     option.value = supplier.id;  // Asume que cada proveedor tiene un ID
-                    option.textContent = `${supplier.nombre} ${supplier.apellidos}`;  // Nombre y apellidos
+                    option.textContent = `${supplier.nombre} ${supplier.apellidos || ''}`;  // Nombre y apellidos
                     supplierSelect.appendChild(option);
                 }
             });
@@ -22,10 +27,10 @@ function loadSuppliers() {
     const localSuppliers = JSON.parse(localStorage.getItem('suppliers')) || [];
     localSuppliers.forEach(supplier => {
         // Asegurarse de que el proveedor tenga un ID y nombre válidos
-        if (supplier.id && supplier.name) {
+        if (supplier.id && supplier.nombre) {  // Cambié 'supplier.name' por 'supplier.nombre'
             const option = document.createElement('option');
             option.value = supplier.id;
-            option.textContent = supplier.name;
+            option.textContent = supplier.nombre;
             supplierSelect.appendChild(option);
         }
     });

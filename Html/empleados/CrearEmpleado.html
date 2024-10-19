@@ -21,7 +21,7 @@
             <div class="profile-menu" id="profileMenu">
                 <p><a href="/Html/edicion_perfil.html" class="button1" id="editProfileBtn">Editar Perfil</a></p>
                 <p><a href="#" class="button1" id="historyBtn">Historial</a></p>
-                <p><a href="#" class="button1" id="logout">Cerrar Sesión</a></p>
+                <p><a href="#" class="button1" id="logoutBtn">Cerrar Sesión</a></p>
             </div>
         </div>
     </div>
@@ -50,7 +50,7 @@
             <div class="profile-header">
                 <input type="file" id="profile-pic" accept="image/*" style="display:none;" />
                 <label for="profile-pic">
-                    <img id="avatar" src="/Assent/img/default-avatar.jpeg" alt="User Avatar" class="avatar"/>
+                    <img id="avatarEmpleado" src="/Assent/img/default-avatar.jpeg" alt="User Avatar" class="avatar"/>
                 </label>
             </div>
             <div class="form-group">
@@ -114,11 +114,10 @@
             </div>
             <button type="submit" class="button">Crear Empleado</button>
             <div class="modification-info">
-                <p>Creado por: <span id="modifiedBy">Admin</span></p>
-                <p>Cargo: <span id="creatorPosition">Gerente</span></p>
-                <p>Fecha de creación: <span id="modificationDate">16/10/2024</span></p>
+                <p>Creado por: <span id="modifiedBy"></span></p>
+                <p>Rol: <span id="creatorPosition"></span></p>
+                <p>Fecha de creación: <span id="modificationDate"></span></p>
             </div>
-            <button id="downloadJson" class="button">Descargar JSON</button>
         </form>
     </div>
     <script src="/Assent/js/empleados/CrearEmpleado.js"></script>

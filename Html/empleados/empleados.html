@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Empleados - Vivero Las Magnolias</title>
     <link rel="stylesheet" href="/Assent/css/empleados/empleados.css">
+    <link rel="stylesheet" href="/Assent/css/general.css">
 </head>
+
 <body>
     <header>
-        <h1>PAGINA DE INICIO</h1>
+        <h1>LISTADO EMPLEADOS</h1>
         <div class="header-icons">
             <div class="notification" onclick="toggleNotifications()">
-                <img src="/Assent/img/bell.png" alt="Notificaciones">
+                <img src="/Assent/img/bell.png" alt="User Avatar">
                 <div class="notification-menu" id="notificationMenu">
-                    <!-- Aquí se mostrarán las notificaciones -->
+                    <!-- Aquí se mostrarán las notificaciones de aceptación -->
                 </div>
             </div>
             <div class="user" onclick="toggleProfile()">
-                <img id="avatar" src="/Assent/img/default-avatar.jpeg" alt="Usuario">
+                <img id="avatar" src="/Assent/img/default-avatar.jpeg" alt="User Avatar">
                 <div class="profile-menu" id="profileMenu">
-                    <p><a href="../edicion_perfil.html" class="button1" id="editProfileBtn">Editar Perfil</a></p>
+                    <p><a href="../Html/edicion_perfil.html" class="button1" id="editProfileBtn">Editar Perfil</a></p>
                     <p><a href="#" class="button1" id="historyBtn">Historial</a></p>
                     <p><a href="#" class="button1" id="logoutBtn">Cerrar Sesión</a></p>
                 </div>
@@ -31,9 +34,18 @@
             <ul>
                 <li><a href="/Html/Inicio_Gerente.html" class="button">INICIO</a></li>
                 <li><a href="/Html/proveedor/proveedores.html" class="button">PROVEEDORES</a></li>
-                <li><a href="#" class="button">ORDEN COMPRA</a></li>
-                <li><a href="#" class="button">EMPLEADOS</a></li>
-                <li><a href="#" class="button">INVENTARIO</a></li>
+                <li>
+                    <div class="orden-compra-toggle" onclick="toggleOrdenMenu()">
+                        <p class="text-toggle">COMPRAS</p>
+                        <div class="orden-dropdown" id="ordenDropdown">
+                            <a href="/Html/OrdenDeCompra/InvetarioBajo.html" class="orden-option">Menú de Inventario Bajo</a>
+                            <a href="#" class="orden-option">Crear Orden de Compra</a>
+                            <a href="#" class="orden-option">Historial de Compras</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="/Html/empleados/empleados.html" class="button">EMPLEADOS</a></li>
+                <li><a href="/Html/Inventario/ListadoHistorial.html" class="button">INVENTARIO</a></li>
                 <li><a href="#" class="button">DOCUMENTOS</a></li>
             </ul>
         </nav>
@@ -47,10 +59,12 @@
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Número de Identificación</th>
                         <th>Email</th>
                         <th>Nombre</th>
-                        <th>Departamento</th>
+                        <th>Cargo</th>
                         <th>Rol</th>
+                        <th>Documentos</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -60,8 +74,8 @@
             </table>
         </main>
     </div>
-
     <script src="/Assent/js/empleados/empleados.js"></script>
     <script src="/Assent/js/general.js"></script>
 </body>
+
 </html>

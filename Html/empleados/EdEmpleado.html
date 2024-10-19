@@ -5,43 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Empleado</title>
     <link rel="stylesheet" href="/Assent/css/empleados/EditarEmpleado.css">
+    <link rel="stylesheet" href="/Assent/css/general.css">
 </head>
 <body>
     <header>
-        <h1>EDITAR EMPLEADO</h1>
+        <h1>LISTADO EMPLEADOS</h1>
         <div class="header-icons">
             <div class="notification" onclick="toggleNotifications()">
-                <img src="/Assent/img/bell.png" alt="Notificaciones">
+                <img src="/Assent/img/bell.png" alt="User Avatar">
                 <div class="notification-menu" id="notificationMenu">
-                    <!-- Aquí se mostrarán las notificaciones -->
+                    <!-- Aquí se mostrarán las notificaciones de aceptación -->
                 </div>
             </div>
             <div class="user" onclick="toggleProfile()">
-                <img id="avatar" src="/Assent/img/default-avatar.jpeg" alt="Usuario">
+                <img id="avatar" src="/Assent/img/default-avatar.jpeg" alt="User Avatar">
                 <div class="profile-menu" id="profileMenu">
-                    <p><a href="/Html/edicion_perfil.html" class="button1" id="editProfileBtn">Editar Perfil</a></p>
+                    <p><a href="../Html/edicion_perfil.html" class="button1" id="editProfileBtn">Editar Perfil</a></p>
                     <p><a href="#" class="button1" id="historyBtn">Historial</a></p>
-                    <p><a href="#" class="button1" id="logout">Cerrar Sesión</a></p>
+                    <p><a href="#" class="button1" id="logoutBtn">Cerrar Sesión</a></p>
                 </div>
             </div>
         </div>
     </header>
     <div class="container">
-        <div class="sidebar" id="sidebar">
-            <button onclick="toggleSidebar()">☰</button>
+        <nav class="sidebar">
             <ul>
-                <li><a href="#">INICIO</a></li>
-                <li><a href="/Html/empleado/empleados.html">EMPLEADOS</a></li>
-                <li><a href="#">ORDEN COMPRA</a></li>
-                <li><a href="#">INVENTARIO</a></li>
-                <li><a href="#">DOCUMENTOS</a></li>
+                <li><a href="/Html/Inicio_Gerente.html" class="button">INICIO</a></li>
+                <li><a href="/Html/proveedor/proveedores.html" class="button">PROVEEDORES</a></li>
+                <li>
+                    <div class="orden-compra-toggle" onclick="toggleOrdenMenu()">
+                        <p class="text-toggle">COMPRAS</p>
+                        <div class="orden-dropdown" id="ordenDropdown">
+                            <a href="/Html/OrdenDeCompra/InvetarioBajo.html" class="orden-option">Menú de Inventario Bajo</a>
+                            <a href="#" class="orden-option">Crear Orden de Compra</a>
+                            <a href="#" class="orden-option">Historial de Compras</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="/Html/empleados/empleados.html" class="button">EMPLEADOS</a></li>
+                <li><a href="/Html/Inventario/ListadoHistorial.html" class="button">INVENTARIO</a></li>
+                <li><a href="#" class="button">DOCUMENTOS</a></li>
             </ul>
-        </div>
+        </nav>
         <form id="editEmployeeForm" class="form-container">
             <div class="profile-header">
                 <input type="file" id="profile-pic" accept="image/*" style="display:none;" />
                 <label for="profile-pic">
-                    <img id="avatar" src="/Assent/img/default-avatar.jpeg" alt="User Avatar" class="avatar"/>
+                    <img id="avatarEmpleado" src="/Assent/img/default-avatar.jpeg" alt="User Avatar" class="avatarEmpleado"/>
                 </label>
             </div>
             <div class="form-group">
@@ -105,11 +115,10 @@
             </div>
             <button type="submit" class="button">Guardar Cambios</button>
             <div class="modification-info">
-                <p>Creado por: <span id="modifiedBy">Admin</span></p>
-                <p>Cargo: <span id="creatorPosition">Gerente</span></p>
-                <p>Fecha de creación: <span id="modificationDate">16/10/2024</span></p>
+                <p>Creado por: <span id="modifiedBy"></span></p>
+                <p>Cargo: <span id="creatorPosition"></span></p>
+                <p>Fecha de creación: <span id="modificationDate"></span></p>
             </div>
-            <button id="downloadJson" class="button">Descargar JSON</button>
         </form>
     </div>
     <script src="/Assent/js/empleados/EditarEmpleado.js"></script>

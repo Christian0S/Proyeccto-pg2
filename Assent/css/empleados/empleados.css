@@ -10,40 +10,6 @@ body {
     overflow-y: hidden;
 }
 
-.user img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
-
-header {
-    background-color: #ffffff; /* Color de fondo del encabezado */
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-h1, h2 {
-    margin: 0;
-}
-
-.header-icons {
-    display: flex;
-    gap: 20px;
-    position: relative;
-}
-
-.notification, .user {
-    cursor: pointer;
-}
-
-.notification img {
-    width: 40px;
-    height: 40px;
-}
-
 .container {
     display: flex;
 }
@@ -83,30 +49,6 @@ h1, h2 {
     display: flex;
     flex-direction: column; /* Alineación vertical */
 }
-
-.sidebar {
-    width: 250px;
-    background-color: #41855d;
-    color: white;
-    padding: 20px;
-    height: 100vh; /* Full height */
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.sidebar ul {
-    list-style: none;
-    padding: 0;
-}
-
-.sidebar ul li {
-    padding: 10px;
-}
-
-.sidebar ul li a {
-    color: white;
-    text-decoration: none;
-}
-
 .search-bar {
     width: 400px;
     display: flex; /* Muestra los elementos en línea */
@@ -143,7 +85,8 @@ table {
 }
 
 th, td {
-    padding: 10px; /* Espaciado interno */
+    padding: 10px;
+    width: auto; /* Espaciado interno */
     text-align: left; /* Alineación del texto */
     border: 1px solid #dddddd; /* Borde de celdas */
 }
@@ -160,21 +103,4 @@ td {
 .actions {
     display: flex; /* Flex para acciones */
     gap: 10px; /* Espaciado entre acciones */
-}
-
-/* Menús desplegables para notificaciones y perfil */
-.notification-menu,
-.profile-menu {
-    position: absolute; /* Posición absoluta para mostrar los menús */
-    display: none; /* Oculta por defecto */
-    background-color: #24ff07; /* Fondo blanco */
-    border: 1px solid #ccc; /* Borde del menú */
-    z-index: 1; /* Asegura que el menú esté sobre otros elementos */
-    width: 200px; /* Ancho fijo para los menús */
-    padding: 10px; /* Espaciado interno del menú */
-}
-
-.notification:hover .notification-menu,
-.user:hover .profile-menu {
-    display: block; /* Muestra el menú al pasar el mouse */
 }

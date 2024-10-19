@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
     <link rel="stylesheet" href="../Assent/css/Inicio/ed_perfil.css">
+    <link rel="stylesheet" href="/Assent/css/general.css">
 </head>
 
 <body>
     <header>
-        <h1>Perfil</h1>
+        <h1>PAGINA DE INICIO</h1>
         <div class="header-icons">
             <div class="notification" onclick="toggleNotifications()">
                 <img src="/Assent/img/bell.png" alt="User Avatar">
@@ -28,18 +29,28 @@
             </div>
         </div>
     </header>
-    <div class="container">
-        <aside class="sidebar">
-            <ul>
-                <li><a href="/Html/Inicio_Gerente.html">INICIO</a></li>
-                <li><a href="#">PROVEEDORES</a></li>
-                <li><a href="#">ORDEN COMPRA</a></li>
-                <li><a href="#">EMPLEADOS</a></li>
-                <li><a href="#">INVENTARIO</a></li>
-                <li><a href="#">DOCUMENTOS</a></li>
-            </ul>
-        </aside>
 
+    
+    <div class="container">
+        <nav class="sidebar">
+            <ul>
+                <li><a href="/Html/Inicio_Gerente.html" class="button">INICIO</a></li>
+                <li><a href="/Html/proveedor/proveedores.html" class="button">PROVEEDORES</a></li>
+                <li>
+                    <div class="orden-compra-toggle" onclick="toggleOrdenMenu()">
+                        <p class="text-toggle">COMPRAS</p>
+                        <div class="orden-dropdown" id="ordenDropdown">
+                            <a href="/Html/OrdenDeCompra/InvetarioBajo.html" class="orden-option">Menú de Inventario Bajo</a>
+                            <a href="#" class="orden-option">Crear Orden de Compra</a>
+                            <a href="#" class="orden-option">Historial de Compras</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="/Html/empleados/empleados.html" class="button">EMPLEADOS</a></li>
+                <li><a href="/Html/Inventario/ListadoHistorial.html" class="button">INVENTARIO</a></li>
+                <li><a href="#" class="button">DOCUMENTOS</a></li>
+            </ul>
+        </nav>
         <div class="content">
             <div class="profile-header">
                 <input type="file" id="profile-pic" accept="image/*" style="display:none;" />
@@ -123,7 +134,7 @@
             </div>
         </div>
     </div>
-
+    <script src="/Assent/js/general.js"></script>
     <script src="/Assent/js/edicion_perfil.js"></script>
 </body>
 </html>

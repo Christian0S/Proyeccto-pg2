@@ -2,79 +2,6 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f0f0; /* Fondo de la página */
-    overflow-y: auto; /* Permite el desplazamiento vertical */
-}
-
-.user img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
-
-
-header {
-    background-color: #ffffff;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-h1, h2 {
-    margin: 0;
-}
-
-.header-icons {
-    display: flex;
-    gap: 20px;
-    position: relative;
-}
-
-.notification, .user {
-    cursor: pointer;
-}
-
-.notification-menu {
-    display: none;
-    position: absolute;
-    right: 60px;
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 10px;
-    z-index: 1000;
-    min-width: 150px; /* Ajuste el ancho mínimo del menú */
-}
-
-.profile-menu {
-    display: none;
-    position: absolute;
-    right: 20px;
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 10px;
-    z-index: 1000;
-    min-width: 150px; /* Ajuste el ancho mínimo del menú */
-}
-
-.notification:hover .notification-menu,
-.user:hover .profile-menu {
-    display: block;
-}
-
-.container {
-    display: flex;
-}
-
-.notification img {
-    width: 40px;
-    height: 40px;
-}
 
 
 .container {
@@ -118,28 +45,6 @@ h1, h2 {
     overflow-y: auto; /* Permite desplazamiento en el contenido */
 }
 
-.sidebar {
-    width: 250px;
-    background-color: #41855d;
-    color: white;
-    padding: 20px;
-    height: auto; /* Altura automática */
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.sidebar ul {
-    list-style: none;
-    padding: 0;
-}
-
-.sidebar ul li {
-    padding: 10px;
-}
-
-.sidebar ul li a {
-    color: white;
-    text-decoration: none;
-}
 
 .form-container {
     background-color: #ffffff;
@@ -176,7 +81,7 @@ h1, h2 {
     margin-bottom: 20px;
 }
 
-.avatar {
+.avatarEmpleado {
     width: 120px;
     height: 120px;
     border-radius: 50%;

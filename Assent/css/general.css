@@ -35,30 +35,6 @@ h1, h2 {
     position: relative;
 }
 
-.notification-menu,
-.profile-menu {
-    display: none;
-    position: absolute;
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 10px;
-    z-index: 1000;
-    min-width: 150px; /* Ajuste el ancho mínimo del menú */
-}
-
-.notification:hover .notification-menu,
-.user:hover .profile-menu {
-    display: block;
-}
-
-.notification, .user {
-    cursor: pointer;
-}
-
-.notification img {
-    width: 40px;
-    height: 40px;
-}
 
 .container {
     display: flex;
@@ -92,8 +68,9 @@ h1, h2 {
     background-color: #41855d;
     color: white;
     padding: 20px;
-    height: auto; /* Full height */
+    max-height: auto; /* Full height */
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    min-height: 93.3vh; 
 }
 
 .sidebar ul {
@@ -111,12 +88,20 @@ h1, h2 {
     text-decoration: none;
 }
 
+.sidebar ul li div {
+    padding: 0 0 0 10px ;
+    width: 90%;
+    cursor: pointer;
+}
+
+
+
 /* Estilos para los enlaces en el dropdown */
 .orden-dropdown a {
     display: block;
     background-color: #41855d; /* Color de fondo para los enlaces */
     color: #41855d; /* Color del texto */
-    padding: 10px; /* Espaciado para los enlaces */
+    padding: 20px; /* Espaciado para los enlaces */
     text-align: left; /* Alinear texto a la izquierda */
     text-decoration: none; /* Quitar subrayado */
     border-radius: 5px; /* Bordes redondeados para los enlaces */
@@ -132,7 +117,7 @@ h1, h2 {
 }
 
 .orden-compra-toggle {
-    position: relative; /* Set positioning for dropdown */
+    position: absolute; /* Set positioning for dropdown */
 }
 
 .orden-dropdown {
@@ -142,10 +127,10 @@ h1, h2 {
     top: 100%; /* Posicionado debajo del toggle */
     background-color: #41855d; /* Color de fondo para el dropdown */
     border: 1px solid #41855d;
-    padding: 10px;
     z-index: 1000;
     min-width: 200px; /* Establecer un ancho mínimo */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Agregar sombra para profundidad */
+    width: 100%;
 }
 
 /* Ajustar el div padre para el efecto hover */
@@ -158,3 +143,49 @@ h1, h2 {
 .orden-compra-toggle:hover .orden-dropdown {
     display: block; /* Mostrar dropdown al pasar el ratón */
 }
+
+.profile-menu {
+    display: none;
+    position: absolute;
+    right: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 1000;
+    min-width: 150px; /* Ajuste el ancho mínimo del menú */
+}
+
+.notification:hover .notification-menu,
+.user:hover .profile-menu {
+    display: block;
+}
+
+.notification-menu {
+    display: none;
+    position: absolute;
+    right: 60px;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 1000;
+    min-width: 150px; /* Ajuste el ancho mínimo del menú */
+}
+
+.profile-menu {
+    display: none;
+    position: absolute;
+    right: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 1000;
+    min-width: 150px; /* Ajuste el ancho mínimo del menú */
+}
+
+.notification img {
+    width: 40px;
+    height: 40px;
+}
+
+
+
